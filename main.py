@@ -18,14 +18,15 @@ def gety(genome):
 def weight(genome):
     x = getx(genome)
     y = gety(genome)
-    return 100.0 / (100.0 * (x**2 - y)**2 + (1 - x)**2 + 1)
+    return 100.0 / (100.0 * (x ** 2 - y) ** 2 + (1 - x) ** 2 + 1)
 
 
 def sortGeneration(generation):
     if len(generation) > generation_size:
         generation.sort(key=lambda element: float(element[1]), reverse=True)
-        generation = generation[:generation_size+1]
+        generation = generation[:generation_size + 1]
     return generation
+
 
 def generateRandom():
     result = []
@@ -33,6 +34,7 @@ def generateRandom():
         genome = random.randint(0, 2147483647)
         result.append((genome, weight(genome)))
     return result
+
 
 def generateNewGeneration(parents, useElitism):
     result = []
@@ -69,5 +71,6 @@ def __main__():
     print("x = ", getx(generation[0][0]))
     print("y = ", gety(generation[0][0]))
     print("Genome = ", hex(generation[0][0]))
+
 
 __main__()
